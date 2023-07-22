@@ -23,7 +23,7 @@ function revealCard(cardNumber) {
   resultContainer.style.display = 'flex';
 
   // Display the selected card in the result container
-  selectedCard.innerHTML = cards[cardNumber - 1].outerHTML;
+  selectedCard.innerHTML = cards[cardNumber - 1].innerHTML;
 
   // Determine the result based on the card number
   let result;
