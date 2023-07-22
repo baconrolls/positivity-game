@@ -3,6 +3,7 @@
 const cards = document.querySelectorAll('.card');
 const resultContainer = document.querySelector('.result-container');
 const selectedCard = document.getElementById('selectedCard');
+const resultHeading = document.getElementById('result-heading');
 const resultMessage = document.getElementById('result-text');
 const indexTitle = document.getElementById('index-title');
 
