@@ -1,20 +1,10 @@
 // script.js
+
 const cards = document.querySelectorAll('.card');
 const resultContainer = document.querySelector('.result-container');
 const selectedCard = document.getElementById('selectedCard');
 const resultMessage = document.getElementById('result-text');
-const resultHeading = document.getElementById('result-heading');
 const indexTitle = document.getElementById('index-title');
-
-function shuffleCards() {
-  // Shuffle the cards array using the Fisher-Yates algorithm
-  for (let i = cards.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    const temp = cards[i].innerHTML;
-    cards[i].innerHTML = cards[j].innerHTML;
-    cards[j].innerHTML = temp;
-  }
-}
 
 function revealCard(cardNumber) {
   // Hide the deck and show the result container
@@ -28,34 +18,34 @@ function revealCard(cardNumber) {
   // Determine the result based on the card number
   let result;
   if (cardNumber === 1) {
-    resultHeading.textContent = "Card 1";
-    result = "This is the result for Card 1.";
+    result = `
+      <h1>Card 1 Result</h1>
+      <p>This is the result for Card 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>`;
   } else if (cardNumber === 2) {
-    resultHeading.textContent = "Card 2";
-    result = "This is the result for Card 2.";
+    result = `
+      <h1>Card 2 Result</h1>
+      <p>This is the result for Card 2. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>`;
   } else if (cardNumber === 3) {
-    resultHeading.textContent = "Card 3";
-    result = "This is the result for Card 3.";
+    result = `
+      <h1>Card 3 Result</h1>
+      <p>This is the result for Card 3. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>`;
   }
 
   // Display the result message
-  resultMessage.textContent = result;
+  resultMessage.innerHTML = result;
 }
-
-// Shuffle the cards when the page loads
-shuffleCards();
-
-// Event listener for the card click event
-cards.forEach((card, index) => {
-  card.addEventListener('click', () => {
-    // Show the result and hide the index title, and pass the selected card to the revealCard function
-    revealCard(index + 1);
-  });
-});
 
 function backToMain() {
   // Hide the result container and show the deck again
   document.getElementById('deck').style.display = 'flex';
   indexTitle.style.display = 'block';
   resultContainer.style.display = 'none';
+}
+
+// Shuffle the cards when the page loads
+for (let i = cards.length - 1; i > 0; i--) {
+  const j = Math.floor(Math.random() * (i + 1));
+  const temp = cards[i].innerHTML;
+  cards[i].innerHTML = cards[j].innerHTML;
+  cards[j].innerHTML = temp;
 }
